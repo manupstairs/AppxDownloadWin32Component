@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DownloadLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace WPFClient
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.progressBar.Visibility = Visibility.Visible;
+            var downloader = new SimpleDownloader();
+            var path = await downloader.DownloadFile("", "", "", "");
+
+            this.progressBar.Visibility = Visibility.Collapsed;
+            txtLog.AppendText($"Done.\n");
+            txtLog.AppendText($"File path is {path}.\n");
+
+            txtLog.AppendText($"Start process {path}.\n");
+            //downloader.StartProcess(path);
         }
     }
 }

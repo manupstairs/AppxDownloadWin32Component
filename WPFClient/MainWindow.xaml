@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="160" Height="80" Click="Button_Click">DownloadRCCService</Button>
+        <TextBox Grid.Row="1" x:Name="txtLog">Log:</TextBox>
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Grid.RowSpan="2" Visibility="Collapsed" Height="80"></ProgressBar>
     </Grid>
 </Window>
