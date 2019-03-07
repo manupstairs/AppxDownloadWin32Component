@@ -1,6 +1,8 @@
 ﻿using DownloadLib;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +32,18 @@ namespace WPFClient
         {
             this.progressBar.Visibility = Visibility.Visible;
             var downloader = new SimpleDownloader();
-            var path = await downloader.DownloadFile("", "", "", "");
+            var path = await downloader.DownloadFile(
+                ConfigurationManager.AppSettings["uri"],
+                "installerFile.msi",
+                ConfigurationManager.AppSettings["username"], 
+                ConfigurationManager.AppSettings["password"]);
 
             this.progressBar.Visibility = Visibility.Collapsed;
             txtLog.AppendText($"Done.\n");
             txtLog.AppendText($"File path is {path}.\n");
 
             txtLog.AppendText($"Start process {path}.\n");
-            //downloader.StartProcess(path);
+            Process.Start(path);
         }
     }
 }
