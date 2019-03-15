@@ -26,24 +26,31 @@ namespace WPFClient
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_Loaded;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.progressBar.Visibility = Visibility.Visible;
-            var downloader = new SimpleDownloader();
-            var path = await downloader.DownloadFile(
-                ConfigurationManager.AppSettings["uri"],
-                "installerFile.msi",
-                ConfigurationManager.AppSettings["username"], 
-                ConfigurationManager.AppSettings["password"]);
+            txtLog.AppendText($"Ask user to download RCC service compoment.\n");
+            var result = MessageBox.Show("We need to download RCC Native Service.", "Download", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                txtLog.AppendText($"Start downloading.\n");
+                this.progressBar.Visibility = Visibility.Visible;
+                var downloader = new SimpleDownloader();
+                var path = await downloader.DownloadFile(
+                    ConfigurationManager.AppSettings["uri"],
+                    "installerFile.msi",
+                    ConfigurationManager.AppSettings["username"],
+                    ConfigurationManager.AppSettings["password"]);
 
-            this.progressBar.Visibility = Visibility.Collapsed;
-            txtLog.AppendText($"Done.\n");
-            txtLog.AppendText($"File path is {path}.\n");
+                this.progressBar.Visibility = Visibility.Collapsed;
+                txtLog.AppendText($"Done.\n");
+                txtLog.AppendText($"File path is {path}.\n");
 
-            txtLog.AppendText($"Start process {path}.\n");
-            Process.Start(path);
+                txtLog.AppendText($"Start process {path}.\n");
+                Process.Start(path);
+            }
         }
     }
 }

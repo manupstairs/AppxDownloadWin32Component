@@ -11,8 +11,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="160" Height="80" Click="Button_Click">DownloadRCCService</Button>
+        <TextBlock FontSize="48">Pretend I'm the RCC UI</TextBlock>
         <TextBox Grid.Row="1" x:Name="txtLog">Log:</TextBox>
-        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Grid.RowSpan="2" Visibility="Collapsed" Height="80"></ProgressBar>
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Grid.RowSpan="2" Visibility="Collapsed" Height="40"></ProgressBar>
     </Grid>
 </Window>
