@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="48">Pretend I'm the RCC UI</TextBlock>
+        <TextBlock FontSize="48">I'm the UI</TextBlock>
         <TextBox Grid.Row="1" x:Name="txtLog">Log:</TextBox>
         <ProgressBar x:Name="progressBar" IsIndeterminate="True" Grid.RowSpan="2" Visibility="Collapsed" Height="40"></ProgressBar>
     </Grid>

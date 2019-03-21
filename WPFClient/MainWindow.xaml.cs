@@ -32,8 +32,8 @@ namespace WPFClient
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            txtLog.AppendText($"Ask user to download RCC service compoment.\n");
-            var result = MessageBox.Show("We need to download RCC Native Service.", "Download", MessageBoxButton.YesNo);
+            txtLog.AppendText($"Ask user to download file.\n");
+            var result = MessageBox.Show("We need to download file.", "Download", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 txtLog.AppendText($"Start downloading.\n");
